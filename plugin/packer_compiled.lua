@@ -93,7 +93,7 @@ _G.packer_plugins = {
     url = "https://github.com/goolord/alpha-nvim"
   },
   ["barbecue.nvim"] = {
-    config = { "\27LJ\2\n`\0\0\4\0\4\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0006\1\0\0'\3\2\0B\1\2\0029\1\3\1\18\3\0\0B\1\2\1K\0\1\0\nsetup\rbarbecue\26custom.configs.winbar\frequire\0" },
+    config = { "\27LJ\2\nd\0\0\4\0\4\0\f6\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0026\1\0\0'\3\2\0B\1\2\0029\1\3\1\18\3\0\0B\1\2\1K\0\1\0\nsetup\rbarbecue\26custom.configs.winbar\frequire\0" },
     load_after = {},
     loaded = true,
     needs_bufread = false,
@@ -314,7 +314,7 @@ vim.cmd [[ packadd nvim-web-devicons ]]
 vim.cmd [[ packadd barbecue.nvim ]]
 
 -- Config for: barbecue.nvim
-try_loadstring("\27LJ\2\n`\0\0\4\0\4\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0006\1\0\0'\3\2\0B\1\2\0029\1\3\1\18\3\0\0B\1\2\1K\0\1\0\nsetup\rbarbecue\26custom.configs.winbar\frequire\0", "config", "barbecue.nvim")
+try_loadstring("\27LJ\2\nd\0\0\4\0\4\0\f6\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0026\1\0\0'\3\2\0B\1\2\0029\1\3\1\18\3\0\0B\1\2\1K\0\1\0\nsetup\rbarbecue\26custom.configs.winbar\frequire\0", "config", "barbecue.nvim")
 
 time([[Sequenced loading]], false)
 vim.cmd [[augroup packer_load_aucmds]]

@@ -127,7 +127,7 @@ return require('packer').startup(function(use)
         },
         after = 'nvim-web-devicons', -- keep this if you're using NvChad
         config = function()
-            local opts = require('custom.configs.winbar').barbecue
+            local opts = require('custom.configs.winbar').barbecue()
             require('barbecue').setup(opts)
         end,
     })

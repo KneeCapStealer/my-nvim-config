@@ -20,7 +20,7 @@ vim.keymap.set('n', 'N', 'Nzzzv')
 vim.keymap.set('x', '<leader>p', '"_dP')
 
 -- Delete into void buffer
-vim.keymap.set({ 'n', 'v' }, '<leader><C-d>', '"_d')
+vim.keymap.set({ 'n', 'v' }, '<leader>d', '"_d')
 
 vim.keymap.set('n', 'Q', '<nop>')
 
@@ -50,3 +50,7 @@ vim.keymap.set('t', '<A-k>', '<C-\\><C-n><C-w>k')
 vim.keymap.set('t', '<A-j>', '<C-\\><C-n><C-w>j')
 vim.keymap.set('t', '<A-h>', '<C-\\><C-n><C-w>h')
 vim.keymap.set('t', '<A-l>', '<C-\\><C-n><C-w>l')
+
+-- Copy into normal copy-paste buffer
+vim.keymap.set({ 'n', 'v' }, '<C-y>', '"+y')
+vim.keymap.set({ 'n', 'v' }, '<C-p>', '"+p')

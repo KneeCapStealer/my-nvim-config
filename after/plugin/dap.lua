@@ -3,8 +3,6 @@ local dap = require('dap')
 
 dapui.setup()
 --- Keybinds
-vim.keymap.set('n', '<leader>dd', function() dapui.toggle() end)
-
 vim.keymap.set('n', '<F5>', function() dap.continue() end)
 vim.keymap.set('n', '<F10>', function() dap.step_over() end)
 vim.keymap.set('n', '<F9>', function() dap.step_into() end)
@@ -21,19 +19,6 @@ vim.keymap.set(
     '<Leader>dh',
     function() require('dap.ui.widgets').hover() end
 )
-vim.keymap.set(
-    { 'n', 'v' },
-    '<Leader>dp',
-    function() require('dap.ui.widgets').preview() end
-)
-vim.keymap.set('n', '<Leader>df', function()
-    local widgets = require('dap.ui.widgets')
-    widgets.centered_float(widgets.frames)
-end)
-vim.keymap.set('n', '<Leader>ds', function()
-    local widgets = require('dap.ui.widgets')
-    widgets.centered_float(widgets.scopes)
-end)
 
 -- Open Dapui automaticly
 dap.listeners.before.event_initialized['dapui_configs'] = function()

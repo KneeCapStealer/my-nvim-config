@@ -101,6 +101,10 @@ return require('packer').startup(function(use)
     use({
         'SmiteshP/nvim-navic',
         requires = 'neovim/nvim-lspconfig',
+        config = function()
+            local opts = require('custom.configs.winbar').navic
+            require('nvim-navic').setup(opts)
+        end,
     })
 
     use({
@@ -112,5 +116,19 @@ return require('packer').startup(function(use)
             'numToStr/Comment.nvim', -- Optional
             'nvim-telescope/telescope.nvim', -- Optional
         },
+    })
+
+    use({
+        'utilyre/barbecue.nvim',
+        tag = '*',
+        requires = {
+            'SmiteshP/nvim-navic',
+            'nvim-tree/nvim-web-devicons', -- optional dependency
+        },
+        after = 'nvim-web-devicons', -- keep this if you're using NvChad
+        config = function()
+            local opts = require('custom.configs.winbar').barbecue
+            require('barbecue').setup(opts)
+        end,
     })
 end)

@@ -61,7 +61,7 @@ return require('packer').startup(function(use)
         event = 'VimEnter',
         requires = { 'nvim-tree/nvim-web-devicons' },
         config = function()
-            local opts = require('chris.beautifier9001').DashboardConfig()
+            local opts = require('custom.beautifier9001').DashboardConfig()
             require('alpha').setup(opts)
         end,
     })

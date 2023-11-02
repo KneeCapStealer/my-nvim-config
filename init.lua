@@ -1,3 +1,1 @@
-vim.lsp.set_log_level('debug')
-
-require('chris')
+require('custom')

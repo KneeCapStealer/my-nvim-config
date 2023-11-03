@@ -53,4 +53,5 @@ vim.keymap.set('t', '<A-l>', '<C-\\><C-n><C-w>l')
 
 -- Copy into normal copy-paste buffer
 vim.keymap.set({ 'n', 'v' }, '<C-y>', '"+y')
-vim.keymap.set({ 'n', 'v' }, '<C-p>', '"+p')
+vim.keymap.set({ 'n', 'v' }, '<leader><C-p>', '"+p')
+

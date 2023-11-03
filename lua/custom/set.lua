@@ -14,7 +14,7 @@ vim.opt.wrap = false
 -- Undo
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = os.getenv('NVIM_DATA') .. '/undodir'
+vim.opt.undodir = vim.fn.stdpath('data') .. '/undodir'
 
 vim.opt.undofile = true
 
@@ -30,3 +30,4 @@ vim.opt.isfname:append('@-@')
 vim.opt.updatetime = 250
 
 vim.opt.colorcolumn = '80'
+

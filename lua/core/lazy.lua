@@ -1,9 +1,7 @@
-require('lazy').setup({ -- Plugins here
-}, { -- Default overides
-    defaults = { lazy = true },
+require('lazy').setup('plugins', { -- Default overides
     install = {
         colorscheme = {
-            'catpuccin',
+            'catppuccin',
         },
     },
 })

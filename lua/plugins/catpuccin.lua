@@ -3,5 +3,12 @@ return {
     name = 'catppuccin',
     main = 'catppuccin',
     priority = 1000,
-    opts = {},
+    config = function()
+        require('catppuccin').setup({
+            flavour = 'frappe',
+            styles = {
+                keywords = { 'italic' },
+            },
+        })
+    end,
 }

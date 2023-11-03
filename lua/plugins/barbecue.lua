@@ -1,8 +1,8 @@
 return {
     'utilyre/barbecue.nvim',
-    lazy = false,
-    event = { 'BufWinEnter' },
-    tag = '*',
+    event = { 'BufReadPre', 'BufNewFile' },
+    name = 'barbecue',
+    version = '*',
     dependencies = {
         'SmiteshP/nvim-navic',
         'nvim-tree/nvim-web-devicons', -- optional dependency

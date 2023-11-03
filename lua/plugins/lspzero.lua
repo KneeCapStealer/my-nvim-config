@@ -6,6 +6,8 @@ return {
         'williamboman/mason.nvim',
         'williamboman/mason-lspconfig.nvim',
 
+        -- Language Support
+        'simrat39/rust-tools.nvim',
         -- LSP Support
         'neovim/nvim-lspconfig',
         -- Autocompletion

@@ -2,7 +2,7 @@ return {
     'VonHeikemen/lsp-zero.nvim',
     lazy = false,
     branch = 'v3.x',
-    requires = {
+    dependencies = {
         'williamboman/mason.nvim',
         'williamboman/mason-lspconfig.nvim',
 

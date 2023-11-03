@@ -61,13 +61,10 @@ require('neodev').setup({
 local lspconfig = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-lsp_zero.on_attach(
-    function(client, bufnr) lsp_zero.default_keymaps({ buffer = bufnr }) end
-)
-
 require('mason').setup({
     ensure_installed = { 'clang-format' },
 })
+
 require('mason-lspconfig').setup({
     ensure_installed = { 'clangd', 'rust_analyzer', 'lua_ls' },
     handlers = {

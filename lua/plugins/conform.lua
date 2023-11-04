@@ -15,7 +15,7 @@ return {
     init = function()
         vim.keymap.set(
             { 'n', 'v' },
-            '<leader>f',
+            '<leader>mp',
             function()
                 require('conform').format({
                     lsp_fallback = true,

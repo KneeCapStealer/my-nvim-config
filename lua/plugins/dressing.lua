@@ -1,4 +1,4 @@
 return {
     'stevearc/dressing.nvim',
-    event = { 'BufEnter' },
+    event = { 'BufReadPre', 'BufNewFile' },
 }

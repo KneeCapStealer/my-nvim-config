@@ -1,6 +1,7 @@
 return {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
+    event = { 'BufReadPre', 'BufNewFile' },
     main = 'nvim-treesitter.configs',
     opts = {
         -- A list of parser names, or "all" (the five listed parsers should always be installed)

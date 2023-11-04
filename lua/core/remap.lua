@@ -1,5 +1,4 @@
 vim.g.mapleader = ' '
-vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
 
 -- Move text and auto indent
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
@@ -8,8 +7,7 @@ vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 vim.keymap.set('v', '<S-up>', ":m '<-2<CR>gv=gv")
 
 -- curser stays when using J
-vim.keymap.set('n', 'J', 'mzJ`z')
--- Curser in the middle when jumping
+vim.keymap.set('n', 'J', 'mzJ`z') -- Curser in the middle when jumping
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
 --
@@ -54,4 +52,3 @@ vim.keymap.set('t', '<A-l>', '<C-\\><C-n><C-w>l')
 -- Copy into normal copy-paste buffer
 vim.keymap.set({ 'n', 'v' }, '<C-y>', '"+y')
 vim.keymap.set({ 'n', 'v' }, '<leader><C-p>', '"+p')
-

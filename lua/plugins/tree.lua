@@ -1,13 +1,13 @@
 return {
     'nvim-tree/nvim-tree.lua',
     version = '*',
+    keys = { '<leader>ft' },
     main = 'nvim-tree',
-    event = { 'VeryLazy' },
     dependencies = {
         'nvim-tree/nvim-web-devicons',
     },
-    opts = {},
-    init = function()
+    config = function()
+        require('nvim-tree').setup()
         -- disable netrw at the very start of your init.lua
         vim.g.loaded_netrw = 1
         vim.g.loaded_netrwPlugin = 1
@@ -15,6 +15,6 @@ return {
         -- set termguicolors to enable highlight groups
         vim.opt.termguicolors = true
 
-        vim.keymap.set('n', '<C-o>', '<cmd>NvimTreeToggle<CR>')
+        vim.keymap.set('n', '<leader>ft', '<cmd>NvimTreeToggle<CR>')
     end,
 }

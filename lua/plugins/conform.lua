@@ -1,9 +1,12 @@
 return {
     'stevearc/conform.nvim',
-    event = { 'BufReadPre', 'BufNewFile' },
+    name = 'conform',
+    keys = { '<leader>mp' },
+    event = { 'BufWritePre' },
     opts = {
         formatters_by_ft = {
             cpp = { 'clang_format' },
+            c = { 'clang_format' },
             lua = { 'stylua' },
         },
         format_on_save = {

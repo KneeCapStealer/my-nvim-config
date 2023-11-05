@@ -6,7 +6,6 @@ return {
         'williamboman/mason.nvim',
         'williamboman/mason-lspconfig.nvim',
 
-        -- Language Support
         'simrat39/rust-tools.nvim',
         -- LSP Support
         'neovim/nvim-lspconfig',
@@ -102,7 +101,12 @@ return {
         })
 
         require('mason-lspconfig').setup({
-            ensure_installed = { 'clangd', 'rust_analyzer', 'lua_ls' },
+            ensure_installed = {
+                'clangd',
+                'rust_analyzer',
+                'lua_ls',
+                'neocmake',
+            },
             handlers = {
                 lsp_zero.default_setup,
                 lua_ls = function()
@@ -132,6 +136,13 @@ return {
                                 )
                             end,
                         },
+                        dap = {
+                            adapter = {
+                                type = 'executable',
+                                command = 'codelldb',
+                                name = 'rt_lldb',
+                            },
+                        },
                     })
                 end,
                 clangd = function()
@@ -143,6 +154,24 @@ return {
                             require('nvim-navbuddy').attach(client, bufnr)
                         end,
                         capabilities = capabilities,
+                    })
+                end,
+                neocmake = function()
+                    lspconfig.neocmake.setup({
+                        default_config = {
+                            cmd = { 'neocmakelsp', '--stdio' },
+                            filetypes = { 'cmake' },
+                            root_dir = function(fname)
+                                return lspconfig.util.find_git_ancestor(fname)
+                            end,
+                            single_file_support = true, -- suggested
+                            on_attach = lsp_zero.on_attach, -- on_attach is the on_attach function you defined
+                            init_options = {
+                                format = {
+                                    enable = true,
+                                },
+                            },
+                        },
                     })
                 end,
             },
@@ -162,7 +191,6 @@ return {
                 ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
                 ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
                 ['<CR>'] = cmp.mapping.confirm({ select = true }),
-                ['<C-Space>'] = cmp.mapping.complete(),
             }),
         })
     end,

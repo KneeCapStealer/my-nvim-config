@@ -13,6 +13,7 @@ return {
             'query',
             'rust',
             'cpp',
+            'cmake',
             'llvm',
         },
 

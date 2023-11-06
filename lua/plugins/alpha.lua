@@ -49,20 +49,23 @@ return {
             ),
 
             dashboard.button(
-                's',
-                '  Recent sessions',
-                '<cmd>SessionManager load_session<CR>'
+                'P',
+                '  View Plugins',
+                "<cmd> lua require('telescope').extensions.telescopeplugins.ListPlugins() <CR>"
             ),
+
             dashboard.button(
                 'p',
                 '  Recent projects',
                 '<cmd>Telescope projects<CR>'
             ),
+
             dashboard.button(
                 'c',
                 '  Configure',
                 "<cmd>cd C:/users/chris/appdata/local/nvim<CR><cmd>lua require('telescope.builtin').git_files()<CR>"
             ),
+
             dashboard.button('q', '󰅚  Quit NVIM', '<cmd>qa<CR>'),
         }
 

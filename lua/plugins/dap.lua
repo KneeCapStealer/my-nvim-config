@@ -5,7 +5,7 @@ return {
         '<F5>',
         '<F10>',
         '<F9>',
-        'F12',
+        '<F12>',
         '<leader>db',
         '<leader>lp',
         '<leader>dl',
@@ -102,7 +102,7 @@ return {
             },
         }
 
-        -- If you want to use this for Rust and C, add something like this:
+        -- If you want to use this for C, add something like this:
         dap.configurations.c = dap.configurations.cpp
     end,
 }

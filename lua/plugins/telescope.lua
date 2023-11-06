@@ -3,7 +3,7 @@ return {
     tag = '0.1.4',
     dependencies = {
         'nvim-lua/plenary.nvim',
-        'KneeCapStealer/telescope-plugins',
+        'AtleSkaanes/telescope-plugins',
     },
     init = function()
         local builtin = require('telescope.builtin')

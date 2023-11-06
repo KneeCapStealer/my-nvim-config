@@ -147,6 +147,10 @@ return {
                 end,
                 clangd = function()
                     lspconfig.clangd.setup({
+                        cmd = {
+                            'clangd',
+                            '--compile-commands-dir=./build',
+                        },
                         on_attach = function(client, bufnr)
                             client.server_capabilities.signatureHelpProvoder =
                                 false
@@ -154,6 +158,12 @@ return {
                             require('nvim-navbuddy').attach(client, bufnr)
                         end,
                         capabilities = capabilities,
+                        on_new_config = function(new_config, new_cwd)
+                            local status, cmake = pcall(require, 'cmake-tools')
+                            if status then
+                                cmake.clangd_on_new_config(new_config)
+                            end
+                        end,
                     })
                 end,
                 neocmake = function()

@@ -6,11 +6,7 @@ return {
 
         lint.linters_by_ft = {
             cpp = { 'clangtidy' },
-            lua = { 'selene' },
-        }
-
-        lint.linters.selene = {
-            cmd = 'selene.cmd',
+            c = { 'clangtidy' },
         }
 
         lint.linters.clangtidy = {

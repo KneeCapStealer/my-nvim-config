@@ -30,3 +30,22 @@ vim.opt.isfname:append('@-@')
 vim.opt.updatetime = 250
 
 vim.opt.colorcolumn = '100'
+
+--- Terminal to powershell
+local powershell_options = {
+    shell = vim.fn.executable('pwsh') == 1 and 'pwsh' or 'powershell',
+    shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;',
+    shellredir = '-RedirectStandardOutput %s -NoNewWindow -Wait',
+    shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode',
+    shellquote = '',
+    shellxquote = '',
+}
+
+for option, value in pairs(powershell_options) do
+    vim.opt[option] = value
+end
+
+vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
+    pattern = { 'pwsh.EXE', 'cmd.EXE' },
+    callback = function() vim.cmd.set('ft=Terminal') end,
+})

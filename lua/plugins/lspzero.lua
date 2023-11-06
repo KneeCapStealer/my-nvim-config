@@ -40,51 +40,16 @@ return {
             vim.keymap.set(
                 'n',
                 '<leader>vws',
-                function() vim.lsp.buf.workspace_symbol() end,
+                vim.lsp.buf.workspace_symbol,
                 opts
             )
-            vim.keymap.set(
-                'n',
-                '<leader>vd',
-                function() vim.diagnostic.open_float() end,
-                opts
-            )
-            vim.keymap.set(
-                'n',
-                '<S-d>',
-                function() vim.diagnostic.goto_next() end,
-                opts
-            )
-            vim.keymap.set(
-                'n',
-                '<A-d>',
-                function() vim.diagnostic.goto_prev() end,
-                opts
-            )
-            vim.keymap.set(
-                'n',
-                '<leader>vca',
-                function() vim.lsp.buf.code_action() end,
-                opts
-            )
-            vim.keymap.set(
-                'n',
-                '<leader>vrr',
-                function() vim.lsp.buf.references() end,
-                opts
-            )
-            vim.keymap.set(
-                'n',
-                '<leader>rr',
-                function() vim.lsp.buf.rename() end,
-                opts
-            )
-            vim.keymap.set(
-                'i',
-                '<C-h>',
-                function() vim.lsp.buf.signature_help() end,
-                opts
-            )
+            vim.keymap.set('n', '<leader>vd', vim.diagnostic.open_float, opts)
+            vim.keymap.set('n', '<S-d>', vim.diagnostic.goto_next, opts)
+            vim.keymap.set('n', '<A-d>', vim.diagnostic.goto_prev, opts)
+            vim.keymap.set('n', '<leader>vca', vim.lsp.buf.code_action, opts)
+            vim.keymap.set('n', '<leader>vrr', vim.lsp.buf.references, opts)
+            vim.keymap.set('n', '<leader>rr', vim.lsp.buf.rename, opts)
+            vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help, opts)
         end)
 
         lsp_zero.set_preferences({
@@ -166,7 +131,7 @@ return {
                             require('nvim-navbuddy').attach(client, bufnr)
                         end,
                         capabilities = capabilities,
-                        on_new_config = function(new_config, new_cwd)
+                        on_new_config = function(new_config, _)
                             local status, cmake = pcall(require, 'cmake-tools')
                             if status then
                                 cmake.clangd_on_new_config(new_config)

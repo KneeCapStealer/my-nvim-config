@@ -22,7 +22,7 @@ return {
         -- neodev
         'folke/neodev.nvim',
         -- Code folding
-        'kevinhwang91/nvim-ufo',
+        'ufo',
     },
     config = function()
         local lsp_zero = require('lsp-zero')

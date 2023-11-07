@@ -3,5 +3,4 @@ return {
     main = 'ibl',
     event = { 'BufRead', 'BufNewFile' },
     opts = {},
-    init = function() vim.opt.listchars:append('eol:⤶') end,
 }

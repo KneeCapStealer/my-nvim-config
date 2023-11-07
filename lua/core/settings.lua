@@ -44,8 +44,3 @@ local powershell_options = {
 for option, value in pairs(powershell_options) do
     vim.opt[option] = value
 end
-
-vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
-    pattern = { 'pwsh.EXE', 'cmd.EXE' },
-    callback = function() vim.cmd.set('ft=Terminal') end,
-})

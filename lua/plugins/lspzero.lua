@@ -17,7 +17,8 @@ return {
         'hrsh7th/cmp-nvim-lsp',
         'L3MON4D3/LuaSnip',
         -- LuaSnip
-        'L3MON4D3/cmp_luasnip',
+        'L3MON4D3/luasnip',
+        'saadparwaiz1/cmp_luasnip',
 
         -- neodev
         'folke/neodev.nvim',

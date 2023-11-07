@@ -6,6 +6,7 @@ return {
     dependencies = 'nvim-tree/nvim-web-devicons',
     opts = {
         options = {
+            mode = 'tabs',
             themable = false,
             numbers = 'ordinal',
             hover = {
@@ -19,12 +20,6 @@ return {
                     text = 'File Explorer',
                     text_align = 'left',
                     separator = true,
-                },
-                {
-                    filetype = 'Terminal',
-                    text = 'Terminal',
-                    text_align = 'center',
-                    seperator = true,
                 },
             },
             diagnostics = 'nvim_lsp',

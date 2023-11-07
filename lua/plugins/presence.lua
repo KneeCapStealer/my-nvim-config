@@ -1,4 +1,4 @@
 return {
-    'andweeb/presence.nvim',
+    'AtleSkaanes/presence.nvim',
     event = { 'VeryLazy' },
 }

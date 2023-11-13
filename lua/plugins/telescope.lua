@@ -5,6 +5,16 @@ return {
         'nvim-lua/plenary.nvim',
         'AtleSkaanes/telescope-plugins',
     },
+    opts = {
+        defaults = {
+            file_ignore_patterns = { '[%.%-a-zA-Z/]*/include[s]?/' },
+            mappings = {
+                i = {
+                    ['<C-h>'] = 'which_key',
+                },
+            },
+        },
+    },
     init = function()
         local builtin = require('telescope.builtin')
         vim.keymap.set('n', '<leader>pf', builtin.find_files, {})

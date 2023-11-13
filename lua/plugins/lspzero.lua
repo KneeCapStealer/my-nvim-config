@@ -9,21 +9,8 @@ return {
         'simrat39/rust-tools.nvim',
         -- LSP Support
         'neovim/nvim-lspconfig',
-        -- Autocompletion
-        'hrsh7th/nvim-cmp',
-        'hrsh7th/cmp-buffer',
-        'hrsh7th/cmp-path',
-        'hrsh7th/cmp-cmdline',
-        'hrsh7th/cmp-nvim-lsp',
-        'L3MON4D3/LuaSnip',
-        -- LuaSnip
-        'L3MON4D3/luasnip',
-        'saadparwaiz1/cmp_luasnip',
-
         -- neodev
         'folke/neodev.nvim',
-        -- Code folding
-        'ufo',
     },
     config = function()
         local lsp_zero = require('lsp-zero')
@@ -31,19 +18,9 @@ return {
         lsp_zero.on_attach(function(_, bufnr)
             local opts = { buffer = bufnr, remap = false }
 
-            vim.keymap.set(
-                'n',
-                'gd',
-                function() vim.lsp.buf.definition() end,
-                opts
-            )
+            vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, opts)
             vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, opts)
-            vim.keymap.set(
-                'n',
-                '<leader>vws',
-                vim.lsp.buf.workspace_symbol,
-                opts
-            )
+            vim.keymap.set('n', '<leader>vws', vim.lsp.buf.workspace_symbol, opts)
             vim.keymap.set('n', '<leader>vd', vim.diagnostic.open_float, opts)
             vim.keymap.set('n', '<S-d>', vim.diagnostic.goto_next, opts)
             vim.keymap.set('n', '<A-d>', vim.diagnostic.goto_prev, opts)
@@ -87,7 +64,6 @@ return {
                     lua_opts.capabilities = capabilities
                     lspconfig.lua_ls.setup(lua_opts)
                 end,
-
                 rust_analyzer = function()
                     local rust_tools = require('rust-tools')
 
@@ -110,33 +86,32 @@ return {
                                 )
                             end,
                         },
-                        dap = {
-                            adapter = {
-                                type = 'executable',
-                                command = 'codelldb',
-                                name = 'rt_lldb',
-                            },
-                        },
+                        dap = require('dap').adapters.codelldb,
                     })
                 end,
                 clangd = function()
                     lspconfig.clangd.setup({
                         cmd = {
                             'clangd',
-                            '--compile-commands-dir=./build',
+                            '--background-index',
+                            '-j=12',
+                            '--clang-tidy',
+                            '--all-scopes-completion',
+                            '--cross-file-rename',
+                            '--completion-style=detailed',
+                            '--header-insertion-decorators',
+                            '--header-insertion=iwyu',
+                            '--pch-storage=memory',
                         },
                         on_attach = function(client, bufnr)
-                            client.server_capabilities.signatureHelpProvoder =
-                                false
+                            client.server_capabilities.signatureHelpProvoder = false
                             require('navic').attach(client, bufnr)
                             require('nvim-navbuddy').attach(client, bufnr)
                         end,
                         capabilities = capabilities,
                         on_new_config = function(new_config, _)
                             local status, cmake = pcall(require, 'cmake-tools')
-                            if status then
-                                cmake.clangd_on_new_config(new_config)
-                            end
+                            if status then cmake.clangd_on_new_config(new_config) end
                         end,
                     })
                 end,
@@ -159,23 +134,6 @@ return {
                     })
                 end,
             },
-        })
-
-        local cmp = require('cmp')
-        local cmp_select = { behavior = cmp.SelectBehavior.Select }
-
-        cmp.setup({
-            sources = {
-                { name = 'path' },
-                { name = 'nvim_lsp' },
-                { name = 'nvim_lua' },
-            },
-            formatting = lsp_zero.cmp_format(),
-            mapping = cmp.mapping.preset.insert({
-                ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-                ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-                ['<CR>'] = cmp.mapping.confirm({ select = true }),
-            }),
         })
     end,
 }

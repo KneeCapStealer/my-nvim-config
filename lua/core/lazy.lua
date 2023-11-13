@@ -7,4 +7,9 @@ require('lazy').setup('plugins', { -- Default overides
             'catppuccin',
         },
     },
+    dev = {
+        path = vim.fn.stdpath('data') .. '/dev_plugins',
+        patterns = { 'AtleSkaanes', 'KneeCapStealer' },
+        fallback = true,
+    },
 })

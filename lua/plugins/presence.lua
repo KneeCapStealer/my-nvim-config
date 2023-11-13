@@ -1,4 +1,4 @@
 return {
-    'AtleSkaanes/presence.nvim',
-    event = { 'VeryLazy' },
+    --     'AtleSkaanes/presence.nvim',
+    --     event = { 'VeryLazy' },
 }

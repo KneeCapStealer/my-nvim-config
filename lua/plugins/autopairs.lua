@@ -5,7 +5,6 @@ return {
     },
     event = 'InsertEnter',
     opts = {
-        map_c_h = true,
         map_cr = true,
     }, -- this is equalent to setup({}) function
 }

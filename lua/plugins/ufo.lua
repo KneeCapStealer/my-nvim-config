@@ -2,6 +2,7 @@ return {
     'kevinhwang91/nvim-ufo',
     main = 'ufo',
     name = 'ufo',
+    event = { 'BufEnter' },
     dependencies = {
         'kevinhwang91/promise-async',
     },
@@ -10,9 +11,7 @@ return {
         vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
         vim.o.foldlevelstart = 99
         vim.o.foldenable = true
-        vim.opt.fillchars:append(
-            [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
-        )
+        vim.opt.fillchars:append([[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]])
 
         require('ufo').setup({
             close_fold_kinds = { 'imports', 'comment' },
@@ -24,16 +23,8 @@ return {
                     jumpBot = ']',
                 },
             },
-            provider_selector = function(bufnr, filetype, buftype)
-                return { 'lsp', 'indent' }
-            end,
-            fold_virt_text_handler = function(
-                virtText,
-                lnum,
-                endLnum,
-                width,
-                truncate
-            )
+            provider_selector = function(bufnr, filetype, buftype) return { 'lsp', 'indent' } end,
+            fold_virt_text_handler = function(virtText, lnum, endLnum, width, truncate)
                 local newVirtText = {}
                 local suffix = (' 󰁂 %d '):format(endLnum - lnum)
                 local sufWidth = vim.fn.strdisplaywidth(suffix)
@@ -51,10 +42,7 @@ return {
                         chunkWidth = vim.fn.strdisplaywidth(chunkText)
                         -- str width returned from truncate() may less than 2nd argument, need padding
                         if curWidth + chunkWidth < targetWidth then
-                            suffix = suffix
-                                .. (' '):rep(
-                                    targetWidth - curWidth - chunkWidth
-                                )
+                            suffix = suffix .. (' '):rep(targetWidth - curWidth - chunkWidth)
                         end
                         break
                     end

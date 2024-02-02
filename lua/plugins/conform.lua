@@ -9,11 +9,11 @@ return {
             c = { 'clang_format' },
             lua = { 'stylua' },
         },
-        format_on_save = {
-            lsp_fallback = true,
-            async = false,
-            timeout_ms = 500,
-        },
+        --  format_on_save = {
+        --      lsp_fallback = true,
+        --      async = false,
+        --      timeout_ms = 500,
+        --  },
     },
     init = function()
         vim.keymap.set(

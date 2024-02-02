@@ -6,22 +6,10 @@ return {
     init = function()
         local h_ui = require('harpoon.ui')
         local h_mark = require('harpoon.mark')
-        require('telescope').load_extension('harpoon')
         vim.keymap.set('n', 'æ', h_ui.nav_prev)
         vim.keymap.set('n', 'ø', h_ui.nav_next)
-        vim.keymap.set('n', '<leader>m', h_mark.add_file)
-        vim.keymap.set('n', '<leader>M', '<cmd> Telescope harpoon marks <CR>')
-        vim.keymap.set('n', '<leader>n', function()
-            vim.ui.input({
-                prompt = 'Buffer number:',
-            }, function(input)
-                if not tonumber(input) then
-                    print('Must be a number')
-                    return
-                end
-                h_ui.nav_file(input)
-            end)
-        end)
+        vim.keymap.set('n', '<leader>m', h_mark.toggle_file)
+        vim.keymap.set('n', '<leader>M', h_ui.toggle_quick_menu)
     end,
     opts = {
         global_settings = {

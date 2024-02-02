@@ -12,6 +12,7 @@ return {
         '<leader>lp',
         '<leader>dl',
         '<leader>dh',
+        '<leader>ds',
     },
     config = function()
         local dapui = require('dapui')
@@ -27,7 +28,89 @@ return {
         )
         sign('DapLogPoint', { text = '◆', texthl = 'DapLogPoint', linehl = '', numhl = '' })
 
-        dapui.setup()
+        dapui.setup({
+            controls = {
+                element = 'repl',
+                enabled = true,
+                icons = {
+                    disconnect = '',
+                    pause = '',
+                    play = '',
+                    run_last = '',
+                    step_back = '',
+                    step_into = '',
+                    step_out = '',
+                    step_over = '',
+                    terminate = '',
+                },
+            },
+            element_mappings = {},
+            expand_lines = true,
+            floating = {
+                border = 'single',
+                mappings = {
+                    close = { 'q', '<Esc>' },
+                },
+            },
+            force_buffers = true,
+            icons = {
+                collapsed = '',
+                current_frame = '',
+                expanded = '',
+            },
+            layouts = {
+                {
+                    elements = {
+                        {
+                            id = 'scopes',
+                            size = 0.25,
+                        },
+                        {
+                            id = 'breakpoints',
+                            size = 0.25,
+                        },
+                        {
+                            id = 'stacks',
+                            size = 0.25,
+                        },
+                        {
+                            id = 'watches',
+                            size = 0.25,
+                        },
+                    },
+                    position = 'left',
+                    size = 40,
+                },
+                {
+                    elements = {
+                        {
+                            id = 'repl',
+                            size = 0.5,
+                        },
+                        {
+                            id = 'console',
+                            size = 0.35,
+                        },
+                    },
+                    position = 'bottom',
+                    size = 10,
+                },
+            },
+            mappings = {
+                edit = 'e',
+                expand = { '<CR>', '<2-LeftMouse>' },
+                open = 'o',
+                remove = 'd',
+                repl = 'r',
+                toggle = 't',
+            },
+            render = {
+                indent = 1,
+                max_value_lines = 100,
+                -- Hide variable types as C++'s are verbose
+                max_type_length = 0,
+            },
+        })
         --- Keybinds
         vim.keymap.set('n', '<F5>', function() dap.continue() end)
         vim.keymap.set('n', '<F10>', function() dap.step_over() end)
@@ -77,6 +160,12 @@ return {
                     detached = false,
                 },
             }
+
+            dap.adapters.godot = {
+                type = 'server',
+                host = '127.0.0.1',
+                port = 6006,
+            }
         end
 
         dap.configurations.cpp = {
@@ -96,6 +185,12 @@ return {
         -- If you want to use this for C, add something like this:
         dap.configurations.c = dap.configurations.cpp
 
-        dap.configurations.rust = {}
+        dap.configurations.gdscript = {
+            type = 'godot',
+            request = 'launch',
+            name = 'Launch scene',
+            project = '${workspaceFolder}',
+            launch_scene = true,
+        }
     end,
 }

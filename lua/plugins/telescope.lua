@@ -4,10 +4,16 @@ return {
     dependencies = {
         'nvim-lua/plenary.nvim',
         'AtleSkaanes/telescope-plugins',
+        'ahmedkhalf/project.nvim',
     },
     opts = {
         defaults = {
-            file_ignore_patterns = { '[%.%-a-zA-Z/]*/include[s]?/' },
+            file_ignore_patterns = {
+                '.?includes?[\\/]',
+                '.%.exe',
+                '.%.ilk',
+                '.%.pdb',
+            },
             mappings = {
                 i = {
                     ['<C-h>'] = 'which_key',

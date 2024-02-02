@@ -13,6 +13,9 @@ return {
     config = function()
         local cmp = require('cmp')
         cmp.setup({
+            performance = {
+                throttle = 50,
+            },
             preselect = cmp.PreselectMode.Item,
             view = {
                 docs = {
